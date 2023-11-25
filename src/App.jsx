@@ -1,42 +1,42 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserContext from "./context/UserContext";
+import MainWeb from "./components/mainWeb/MainWeb";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import Login from "./components/userManagement/Login";
+import Register from "./components/userManagement/Register";
 
 function App() {
-  const [listaPokemon, setListaPokemon] = useState(null)
+  const [listaPokemon, setListaPokemon] = useState(null);
+  const [loginUser, setLoginUser] = useState(null)
 
-  function pedidaTest(){
-    fetch('http://localhost:3000/api/pokemon/paginated')
-  .then(res => res.json())
-  .then(res => console.log(res))
-}
+  function pedidaTest() {
+    fetch("http://localhost:3000/api/pokemon/paginated")
+      .then((res) => res.json())
+      .then((res) => {
+        setListaPokemon(res.pokemon);
+      });
+  }
 
-useEffect(() => {
-  pedidaTest()
-},[])
+  useEffect(() => {
+    pedidaTest();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>
-          {}
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <UserContext.Provider value={{ listaPokemon, setListaPokemon, loginUser, setLoginUser}}>
+      <BrowserRouter>
+      <Header/>
+        <Routes>
+          <Route path="/" element={<MainWeb/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<Register/>}/>
+        </Routes>
+      </BrowserRouter>
+      <Footer/>
+    </UserContext.Provider>
+  );
 }
 
-export default App
+export default App;
