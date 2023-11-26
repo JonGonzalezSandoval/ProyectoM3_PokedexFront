@@ -25,20 +25,25 @@ export default function Login() {
   return (
     <>
       <form>
-        <label htmlFor=""></label>
-        <input
-          onChange={handleInput}
-          type="text"
-          name="username"
-          placeholder="Username"
-        />
-        <label htmlFor=""></label>
-        <input
-          onChange={handleInput}
-          type="password"
-          name="password"
-          placeholder="Password"
-        />
+        <label htmlFor="">
+          Username: 
+          <input
+            onChange={handleInput}
+            type="text"
+            name="username"
+            placeholder="Username"
+          />
+        </label>
+        <label htmlFor="">
+          Password: 
+          <input
+            onChange={handleInput}
+            type="password"
+            name="password"
+            placeholde
+            r="Password"
+          />
+        </label>
         <button onClick={handleClick}>Login</button>
       </form>
       <div>

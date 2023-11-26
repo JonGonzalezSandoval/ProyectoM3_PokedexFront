@@ -36,14 +36,14 @@ export default function Header() {
             </Link>{" "}
             |{" "}
             <Link to="/register" className="">
-              Regristate
+              Register
             </Link>
           </>
         ) : location.pathname.includes("login") ? (
           <>
             |{" "}
             <Link to="/register" className="">
-              Regrister
+              Register
             </Link>
           </>
         ) : (

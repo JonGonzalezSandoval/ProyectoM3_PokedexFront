@@ -10,22 +10,41 @@ import Register from "./components/userManagement/Register";
 
 function App() {
   const [listaPokemon, setListaPokemon] = useState(null);
+  const [listaTipos, setListaTipos] = useState(null)
+  const [listaHabilidades, setListaHabilidades] = useState(null)
   const [loginUser, setLoginUser] = useState(null)
 
-  function pedidaTest() {
+  function pedidaTestPokemon() {
     fetch("http://localhost:3000/api/pokemon/paginated")
       .then((res) => res.json())
       .then((res) => {
         setListaPokemon(res.pokemon);
       });
   }
+  function pedidaTestTipos() {
+    fetch("http://localhost:3000/api/pokemon-types/allTypes")
+      .then((res) => res.json())
+      .then((res) => {
+        setListaTipos(res);
+      });
+  }
+  function pedidaTestHabilidades() {
+    fetch("http://localhost:3000/api/pokemon-abilities/allAbilities")
+      .then((res) => res.json())
+      .then((res) => {
+        setListaHabilidades(res)
+        
+      });
+  }
 
   useEffect(() => {
-    pedidaTest();
+    pedidaTestPokemon();
+    pedidaTestTipos();
+    pedidaTestHabilidades();
   }, []);
 
   return (
-    <UserContext.Provider value={{ listaPokemon, setListaPokemon, loginUser, setLoginUser}}>
+    <UserContext.Provider value={{ listaPokemon, setListaPokemon, listaTipos, setListaTipos, listaHabilidades, setListaHabilidades, loginUser, setLoginUser}}>
       <BrowserRouter>
       <Header/>
         <Routes>
