@@ -7,6 +7,9 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Login from "./components/userManagement/Login";
 import Register from "./components/userManagement/Register";
+import Pokedex from "./components/pokedex/Pokedex";
+import Games from "./components/games/Games";
+import MyPokedex from "./components/myPokedex/MyPokedex";
 
 function App() {
   const [listaPokemon, setListaPokemon] = useState(null);
@@ -51,6 +54,9 @@ function App() {
           <Route path="/" element={<MainWeb/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/pokedex" element={<Pokedex/>}/>
+          <Route path="/myPokedex" element={<MyPokedex/>}/>
+          <Route path="/games" element={<Games/>}/>
         </Routes>
       </BrowserRouter>
       <Footer/>

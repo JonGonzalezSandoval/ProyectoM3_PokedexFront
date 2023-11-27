@@ -22,7 +22,7 @@ export default function Header() {
         </Link>{" "}
         {loginUser !== null ? (
           <>
-            <h2>Welcome {loginUser.username}</h2>
+            <h2>Welcome {loginUser.name}</h2>
             <h4 className="logout" onClick={handleLogout}>
               {" "}
               Logout{" "}

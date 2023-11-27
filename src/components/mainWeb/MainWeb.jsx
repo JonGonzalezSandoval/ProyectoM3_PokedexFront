@@ -1,64 +1,43 @@
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
+import Filter from "../filter/Filter";
 
 export default function MainWeb() {
   const { listaPokemon, setListaPokemon } = useContext(UserContext);
-  const { listaHabilidades, setListaHabilidades } = useContext(UserContext);
-  const { listaTipos, setListaTipos } = useContext(UserContext);
+  const [randomPokemon, setRandomPokemon] = useState(null);
 
-  const [listaTiposBooleana, setListaTiposBooleana] = useState(null);
+  function fillRandom(positions) {
+    let temp = [];
+    for (let i = 0; i < 6; i++) {
+      temp.push(listaPokemon[Math.floor(Math.random()*listaPokemon.length)])
+    }
+    setRandomPokemon(temp)
+  }
 
-  // function crearBooleana(){
-  //   let temp = []
-  //   listaTipos.map(tipo => {
-
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   crearBooleana();
-  // }, [])
+  useEffect(() => {
+    if(listaPokemon !== null)
+      fillRandom();
+  },[listaPokemon])
 
   return (
     <>
       <div>
-        {listaTipos !== null ? (
-          listaTipos.map((tipo, i) => (
-            <div key={tipo._id}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={tipo.checked}
-                  // onChange={() => handleCheckboxChange(tipo.id)}
-                />
-                {tipo.name.charAt(0).toUpperCase() + tipo.name.substring(1)}
-              </label>
-            </div>
-          ))
-        ) : (
-          <h3>Cargando datos</h3>
-        )}
-        {listaPokemon !== null ? (
-          listaPokemon.map((pokemon) => (
+        {randomPokemon !== null ? (
+          randomPokemon.map((pokemon) => (
             <div key={pokemon.pokemonNumber}>
               {pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1)}
+              <div>
+                <img
+                  src={pokemon.urlImg}
+                  alt={`Imagen del pokemon ${pokemon.name}`}
+                />
+              </div>
             </div>
           ))
         ) : (
           <h3>Cargando datos</h3>
         )}
-        {listaHabilidades !== null ? (
-          <select name="" id="">
-            {listaHabilidades.map((habilidad, i) => (
-              <option key={i} value={habilidad._id}>
-                {habilidad.name.charAt(0).toUpperCase() +
-                  habilidad.name.substring(1)}
-              </option>
-            ))}
-          </select>
-        ) : (
-          <h3>Cargando datos</h3>
-        )}
+        <Filter />
       </div>
     </>
   );
