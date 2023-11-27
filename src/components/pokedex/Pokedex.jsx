@@ -20,8 +20,8 @@ export default function Pokedex() {
         ) : (
           <h3>Cargando datos</h3>
         )}
-        <Filter/>
       </div>
+        <Filter/>
     </>
   );
 }

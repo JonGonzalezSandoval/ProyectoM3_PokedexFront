@@ -9,22 +9,21 @@ export default function MainWeb() {
   function fillRandom(positions) {
     let temp = [];
     for (let i = 0; i < 6; i++) {
-      temp.push(listaPokemon[Math.floor(Math.random()*listaPokemon.length)])
+      temp.push(listaPokemon[Math.floor(Math.random() * listaPokemon.length)]);
     }
-    setRandomPokemon(temp)
+    setRandomPokemon(temp);
   }
 
   useEffect(() => {
-    if(listaPokemon !== null)
-      fillRandom();
-  },[listaPokemon])
+    if (listaPokemon !== null) fillRandom();
+  }, [listaPokemon]);
 
   return (
     <>
-      <div>
+      <div className="card-displayer">
         {randomPokemon !== null ? (
           randomPokemon.map((pokemon) => (
-            <div key={pokemon.pokemonNumber}>
+            <div key={pokemon.pokemonNumber} className="card">
               {pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1)}
               <div>
                 <img
@@ -37,7 +36,6 @@ export default function MainWeb() {
         ) : (
           <h3>Cargando datos</h3>
         )}
-        <Filter />
       </div>
     </>
   );

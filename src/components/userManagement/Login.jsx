@@ -40,7 +40,7 @@ export default function Login() {
             .then(res =>{
               console.log(res)
               setLoginUser(res);
-              // navigate("/");
+              navigate("/");
         })
     })
     .catch(error => {

@@ -1,16 +1,11 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import UserContext from "../../context/UserContext";
+import Logout from "../userManagement/Logout";
 
 export default function Header() {
   const { loginUser, setLoginUser } = useContext(UserContext);
 
-  let navigate = useNavigate();
-
-  function handleLogout() {
-    setLoginUser(null);
-    navigate("/");
-  }
   return (
     <header>
       <div>
@@ -20,13 +15,22 @@ export default function Header() {
         <Link to="/" className="">
           Home
         </Link>{" "}
+        |{" "}
+        <Link to="/pokedex" className="">
+          Pokedex
+        </Link>{" "}
+        |{" "}
+        <Link to="/games" className="">
+          Games
+        </Link>{" "}
         {loginUser !== null ? (
           <>
-            <h2>Welcome {loginUser.name}</h2>
-            <h4 className="logout" onClick={handleLogout}>
-              {" "}
-              Logout{" "}
-            </h4>
+            |{" "}
+            <Link to="/myPokedex" className="">
+              My Pokedex
+            </Link>{" "}
+            |{" "}
+            <Logout />
           </>
         ) : location.pathname === "/" ? (
           <>

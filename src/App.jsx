@@ -10,6 +10,7 @@ import Register from "./components/userManagement/Register";
 import Pokedex from "./components/pokedex/Pokedex";
 import Games from "./components/games/Games";
 import MyPokedex from "./components/myPokedex/MyPokedex";
+import WhatPokemon from "./components/games/WhatPokemon";
 
 function App() {
   const [listaPokemon, setListaPokemon] = useState(null);
@@ -57,6 +58,8 @@ function App() {
           <Route path="/pokedex" element={<Pokedex/>}/>
           <Route path="/myPokedex" element={<MyPokedex/>}/>
           <Route path="/games" element={<Games/>}/>
+          <Route path="/guessPokemon" element={<WhatPokemon/>} />
+          <Route path="/sudoku" element={<WhatPokemon/>} />
         </Routes>
       </BrowserRouter>
       <Footer/>
