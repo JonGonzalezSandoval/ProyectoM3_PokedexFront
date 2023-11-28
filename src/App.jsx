@@ -11,6 +11,9 @@ import Pokedex from "./components/pokedex/Pokedex";
 import Games from "./components/games/Games";
 import MyPokedex from "./components/myPokedex/MyPokedex";
 import WhatPokemon from "./components/games/WhatPokemon";
+import Profile from "./components/userManagement/Profile";
+import Pokemon from "./components/pokemon/Pokemon";
+import SudokuPokemon from "./components/games/SudokuPokemon";
 
 function App() {
   const [listaPokemon, setListaPokemon] = useState(null);
@@ -55,11 +58,13 @@ function App() {
           <Route path="/" element={<MainWeb/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
+          <Route path="/profile" element={<Profile/>}/>
           <Route path="/pokedex" element={<Pokedex/>}/>
           <Route path="/myPokedex" element={<MyPokedex/>}/>
+          <Route path="/pokemon/:chosenPokemon" element={<Pokemon/>}/>
           <Route path="/games" element={<Games/>}/>
           <Route path="/guessPokemon" element={<WhatPokemon/>} />
-          <Route path="/sudoku" element={<WhatPokemon/>} />
+          <Route path="/sudoku" element={<SudokuPokemon/>} />
         </Routes>
       </BrowserRouter>
       <Footer/>

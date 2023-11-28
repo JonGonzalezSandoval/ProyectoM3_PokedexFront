@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 /**
-* TODO: revisar si ya existe un usuario con ese nombre antes de poder registrar el nuevo.
+* TODO: Revisar si ya existe un usuario con ese nombre antes de poder registrar el nuevo. Y el metodo de creación.
 */
 
 
@@ -11,6 +12,8 @@ export default function Register() {
     username: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   function handleInput(e) {
     let tempNewUser = { ...newUser };
@@ -49,6 +52,7 @@ export default function Register() {
           // Handle other errors here
         }
       });
+      navigate("/")
   }
 
   return (

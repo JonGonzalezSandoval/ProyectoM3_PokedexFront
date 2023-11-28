@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
 import Filter from "../filter/Filter";
+import { Link } from "react-router-dom";
 
 export default function MainWeb() {
   const { listaPokemon, setListaPokemon } = useContext(UserContext);
@@ -9,7 +10,11 @@ export default function MainWeb() {
   function fillRandom(positions) {
     let temp = [];
     for (let i = 0; i < 6; i++) {
-      temp.push(listaPokemon[Math.floor(Math.random() * listaPokemon.length)]);
+      let pok = listaPokemon[Math.floor(Math.random() * listaPokemon.length)];
+      while (temp.includes(pok)) {
+        pok = listaPokemon[Math.floor(Math.random() * listaPokemon.length)];
+      }
+      temp.push(pok);
     }
     setRandomPokemon(temp);
   }
@@ -24,13 +29,18 @@ export default function MainWeb() {
         {randomPokemon !== null ? (
           randomPokemon.map((pokemon) => (
             <div key={pokemon.pokemonNumber} className="card">
-              {pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1)}
-              <div>
-                <img
-                  src={pokemon.urlImg}
-                  alt={`Imagen del pokemon ${pokemon.name}`}
-                />
-              </div>
+              <h2>
+                {pokemon.name.charAt(0).toUpperCase() +
+                  pokemon.name.substring(1)}
+              </h2>
+              <Link to={`/pokemon/${pokemon.name}`}>
+                <div>
+                  <img
+                    src={pokemon.urlImg}
+                    alt={`Imagen del pokemon ${pokemon.name}`}
+                  />
+                </div>
+              </Link>
             </div>
           ))
         ) : (

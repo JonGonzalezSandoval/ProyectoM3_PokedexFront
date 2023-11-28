@@ -30,7 +30,10 @@ export default function Header() {
               My Pokedex
             </Link>{" "}
             |{" "}
-            <Logout />
+            <Link to="/profile" className="">
+              {loginUser.name}
+            </Link>{" "}
+            | <Logout />
           </>
         ) : location.pathname === "/" ? (
           <>
@@ -50,8 +53,19 @@ export default function Header() {
               Register
             </Link>
           </>
+        ) : location.pathname.includes("register") ? (
+          <>
+            |{" "}
+            <Link to="/login" className="">
+              Login
+            </Link>
+          </>
         ) : (
           <>
+            |{" "}
+            <Link to="/register" className="">
+              Register
+            </Link>
             |{" "}
             <Link to="/login" className="">
               Login
