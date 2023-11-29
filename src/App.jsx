@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserContext from "./context/UserContext";
 import MainWeb from "./components/mainWeb/MainWeb";

@@ -28,20 +28,23 @@ export default function MainWeb() {
       <div className="card-displayer">
         {randomPokemon !== null ? (
           randomPokemon.map((pokemon) => (
-            <div key={pokemon.pokemonNumber} className="card">
-              <h2>
-                {pokemon.name.charAt(0).toUpperCase() +
-                  pokemon.name.substring(1)}
-              </h2>
-              <Link to={`/pokemon/${pokemon.name}`}>
-                <div>
-                  <img
-                    src={pokemon.urlImg}
-                    alt={`Imagen del pokemon ${pokemon.name}`}
+          <div key={pokemon.pokemonNumber} className="card">
+            <Link to={`/pokemon/${pokemon.name}`}>
+              <div>
+                <img
+                  src={pokemon.urlImg}
+                  alt={`Imagen del pokemon ${pokemon.name}`}
                   />
-                </div>
-              </Link>
-            </div>
+              </div>
+              <span>Nº {pokemon.pokemonNumber}</span>
+              <h4>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1)}</h4>
+              <ul>
+              {pokemon.pokemonType.map((tipo, i) => (
+                <li key={i}>{tipo.name}</li>
+              ))}
+              </ul>
+            </Link>
+          </div>
           ))
         ) : (
           <h3>Cargando datos</h3>

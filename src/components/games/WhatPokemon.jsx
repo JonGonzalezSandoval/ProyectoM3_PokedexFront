@@ -15,6 +15,8 @@ export default function WhatPokemon() {
     setChosenPokemon(
       listaPokemon[Math.floor(Math.random() * listaPokemon.length)]
     );
+    setGuessed(false);
+    setTypingName("");
   }
 
   useEffect(() => {
@@ -29,9 +31,7 @@ export default function WhatPokemon() {
       if (typingName.toLowerCase() === chosenPokemon.name.toLowerCase()) {
         setGuessed(true);
         console.log("acertado")
-        if(endless){
-          setGuessed(false);
-          setTypingName("");
+        if(endless){ 
           debounceFunction();
         }
       }
@@ -46,7 +46,9 @@ export default function WhatPokemon() {
           <div>WHOS THAT POKEMON</div>
           <div>
             <div></div>
-            <img src={chosenPokemon.urlImg} alt="" className="img-game" />
+            <div >
+            <img src={chosenPokemon.urlImg} alt="" className={!guessed?"guessing":"guessed"} />
+            </div>
           </div>
           <div>
             <input
@@ -58,10 +60,13 @@ export default function WhatPokemon() {
               onChange={(e) => setTypingName(e.target.value)}
             />
           </div>
-          <div className={guessed?"acertado":"fallo"}>
+          <div className={guessed?"mostrar":"ocultar"}>
             <h2>ACERTADO</h2>
           </div>
           <button onClick={() => setEndless(!endless)}>Endless Mode</button>
+          <div className={endless?"mostrar":"ocultar"}>
+            <h2>Endless Mode Activated</h2>
+          </div>
         </div>
       ) : (
         <div>Loading a Pokemon</div>

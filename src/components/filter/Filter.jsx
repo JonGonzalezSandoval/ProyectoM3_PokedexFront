@@ -16,7 +16,7 @@ function handleFilter(e){
 
 
   return (
-    <div>
+    <div className="filter">
         <div>
           <h3>Busca un pokemon:</h3>
           <input type="text" />
