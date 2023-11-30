@@ -14,7 +14,7 @@ export default function Pokedex() {
             {listaPokemon !== null ? (
               listaPokemon.map((pokemon) => (
                 <div key={pokemon.pokemonNumber} className="card">
-                  {/* <Link to={`/pokemon/${pokemon.name}`}> */}
+                  <Link to={`/pokemon/${pokemon.name}`}>
                     <div>
                       <img
                         src={pokemon.urlImg}
@@ -28,7 +28,7 @@ export default function Pokedex() {
                       <li key={i}>{tipo.name.charAt(0).toUpperCase() + tipo.name.substring(1)}</li>
                     ))}
                     </ul>
-                  {/* </Link> */}
+                  </Link>
                 </div>
               ))
             ) : (

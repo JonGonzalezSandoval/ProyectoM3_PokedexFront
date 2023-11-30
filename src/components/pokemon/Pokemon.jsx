@@ -22,27 +22,42 @@ export default function Pokemon() {
   }, []);
 
   return pokemon !== null ? (
-    <div>
-      <h2>
-        {pokemon[0].name.charAt(0).toUpperCase() + pokemon[0].name.substring(1)} 
-      </h2>
-      <h2>
-        Nº {pokemon[0].pokemonNumber}
-      </h2>
-      <div>
-        <img
-          src={pokemon[0].urlImg}
-          alt={`Imagen del pokemon ${pokemon[0].name}`}
-        />
-      </div>
-      <div>
-        <h3>Types</h3>
-        <ul>
-          {pokemon[0].pokemonType.map((typePo, i) => (
-            <li key={i}>{typePo.name.charAt(0).toUpperCase() + typePo.name.substring(1)}</li>
-          ))}
-        </ul>
-        <table>
+    <main className="pokemon">
+      <div className="pokemon-displayer">
+        <h2 className="pokemon-displayer__title">
+          {pokemon[0].name.charAt(0).toUpperCase() +
+            pokemon[0].name.substring(1)}
+        </h2>
+        <h2 className="pokemon-displayer__number">
+          Nº {pokemon[0].pokemonNumber}
+        </h2>
+        <div className="pokemon-displayer__img-container">
+          <img
+            src={pokemon[0].urlImg}
+            alt={`Imagen del pokemon ${pokemon[0].name}`}
+          />
+        </div>
+        <div className="pokemon-displayer__abilities">
+          <h3>Abilities</h3>
+          <ul>
+            {pokemon[0].pokemonAbilities.map((ability, i) => (
+              <li key={i}>
+                {ability.name.charAt(0).toUpperCase() +
+                  ability.name.substring(1)}
+                : {ability.shortEffect}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="pokemon-displayer__types">
+          <ul className="typeDisplayerMenu">
+            {pokemon[0].pokemonType.map((typePo, i) => (
+              <li key={i} className={`pokemonType ${typePo.name}`}>
+                {typePo.name.charAt(0).toUpperCase() + typePo.name.substring(1)}
+              </li>
+            ))}
+          </ul>
+          {/* <table>
           <thead>
             <tr>
               <th>Damage Multiplier</th>
@@ -71,17 +86,23 @@ export default function Pokemon() {
               <td>{}</td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
+        </div>
+        <div className="pokemon-displayer__more-Info">
+          <a
+            href={`https://www.wikidex.net/wiki/${pokemon[0].name.replace(
+              "-",
+              " "
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            
+          >
+            More info
+          </a>
+        </div>
       </div>
-      <div>
-        <h3>Abilities</h3>
-        <ul>
-          {pokemon[0].pokemonAbilities.map((ability, i) => (
-            <li key={i}>{ability.name.charAt(0).toUpperCase() + ability.name.substring(1)}: {ability.shortEffect}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    </main>
   ) : (
     <div>Loading...</div>
   );

@@ -1,0 +1,191 @@
+
+@import './variables';
+
+
+.pokemon{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.pokemon-displayer{
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-areas: 
+    "titulo titulo pokNumber"
+    "imagen imagen ability"
+    "types types info";
+    width: 70%;
+    margin: 20px;
+
+    &__title{
+        grid-area: titulo;
+        color: white;
+        width: 100%;
+        display: flex;
+        font-size: 400%;
+        text-align: center;
+    }
+
+    &__number{
+        grid-area: pokNumber;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    &__img-container{
+        grid-area: imagen;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        img{
+            width: 50%;
+        }
+    }
+
+    &__types{
+        grid-area: types;
+    }
+
+    &__abilities{
+        grid-area: ability;
+    }
+
+    &__more-Info{
+        grid-area: info;
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+.typeDisplayerMenu {
+    list-style-type: none; /* Remove default list styles */
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    justify-content: center;
+    gap: 7%;
+}
+
+.steel{
+    color: black;
+    background-color: $color-acero;
+    border-color: black;
+}
+
+.water{
+    color: black;
+    background-color: $color-agua;
+    border-color: black;
+}
+
+.bug{
+    color: black;
+    background-color: $color-bicho;
+    border-color: black;
+}
+
+.dragon{
+    color: white;
+    background-color: $color-dragon;
+    border-color: white;
+}
+
+.electric{
+    color: black;
+    background-color: $color-electrico;
+    border-color: black;
+}
+
+.ghost{
+    color: white;
+    background-color: $color-fantasma;
+    border-color: white;
+}
+
+.fire{
+    color: black;
+    background-color: $color-fuego;
+    border-color: black;
+}
+
+.fairy{
+    color: black;
+    background-color: $color-hada;
+    border-color: black;
+}
+
+.ice{
+    color: black;
+    background-color: $color-hielo;
+    border-color: black;
+}
+
+.fighting{
+    color: black;
+    background-color: $color-lucha;
+    border-color: black;
+}
+
+.normal{
+    color: black;
+    background-color: $color-normal;
+    border-color: black;
+}
+
+.grass{
+    color: black;
+    background-color: $color-planta;
+    border-color: black;
+}
+
+.psychic{
+    color: black;
+    background-color: $color-psiquico;
+    border-color: black;
+}
+
+.rock{
+    color: black;
+    background-color: $color-roca;
+    border-color: black;
+}
+
+.dark{
+    color: white;
+    background-color: $color-siniestro;
+    border-color: white;
+}
+
+.ground{
+    color: white;
+    background-color: $color-tierra;
+    border-color: white;
+}
+
+.poison{
+    color: white;
+    background-color: $color-veneno;
+    border-color: white;
+}
+
+.flying{
+    color: black;
+    background-color: $color-volador;
+    border-color: black;
+}
+
+.pokemonType{
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+
+    border-radius: 15px;
+    padding: 2px;
+    height: 20px;
+    width: 90px;
+    border: 2px solid;
+
+    line-height: 10px;
+}

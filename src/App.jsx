@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
+import "./styles/pokemonCard.scss"
+import "./styles/header.scss"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserContext from "./context/UserContext";
 import MainWeb from "./components/mainWeb/MainWeb";
@@ -14,6 +16,7 @@ import WhatPokemon from "./components/games/WhatPokemon";
 import Profile from "./components/userManagement/Profile";
 import Pokemon from "./components/pokemon/Pokemon";
 import SudokuPokemon from "./components/games/SudokuPokemon";
+
 
 function App() {
   const [listaPokemon, setListaPokemon] = useState(null);

@@ -8,66 +8,66 @@ export default function Header() {
 
   return (
     <header>
-      <div>
+      <div className="header-logo">
         <h1>Pokedex</h1>
       </div>
-      <div>
-        <Link to="/" className="">
+      <div className="header-menu">
+        <Link to="/" className="enlace">
           Home
-        </Link>{" "}
-        |{" "}
-        <Link to="/pokedex" className="">
+        </Link> 
+        
+        <Link to="/pokedex" className="enlace">
           Pokedex
-        </Link>{" "}
-        |{" "}
-        <Link to="/games" className="">
+        </Link> 
+        
+        <Link to="/games" className="enlace">
           Games
-        </Link>{" "}
+        </Link> 
         {loginUser !== null ? (
           <>
-            |{" "}
-            <Link to="/myPokedex" className="">
+            
+            <Link to="/myPokedex" className="enlace">
               My Pokedex
-            </Link>{" "}
-            |{" "}
-            <Link to="/profile" className="">
+            </Link> 
+            
+            <Link to="/profile" className="enlace">
               {loginUser.name}
-            </Link>{" "}
+            </Link> 
             | <Logout />
           </>
         ) : location.pathname === "/" ? (
           <>
-            |{" "}
-            <Link to="/login" className="">
+            
+            <Link to="/login" className="enlace">
               Login
-            </Link>{" "}
-            |{" "}
-            <Link to="/register" className="">
+            </Link> 
+            
+            <Link to="/register" className="enlace">
               Register
             </Link>
           </>
         ) : location.pathname.includes("login") ? (
           <>
-            |{" "}
-            <Link to="/register" className="">
+            
+            <Link to="/register" className="enlace">
               Register
             </Link>
           </>
         ) : location.pathname.includes("register") ? (
           <>
-            |{" "}
-            <Link to="/login" className="">
+            
+            <Link to="/login" className="enlace">
               Login
             </Link>
           </>
         ) : (
           <>
-            |{" "}
-            <Link to="/register" className="">
+            
+            <Link to="/register" className="enlace">
               Register
             </Link>
-            |{" "}
-            <Link to="/login" className="">
+            
+            <Link to="/login" className="enlace">
               Login
             </Link>
           </>
