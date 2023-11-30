@@ -1,0 +1,188 @@
+@import './variables';
+
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root{
+  background-color: green;
+  background: linear-gradient(to right, #66ff7f, #a8cc33); /* Gradiente de colores radial */
+  margin: 0;
+  padding: 0;
+  // min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  /*justify-content: center;
+  align-items: center; */
+}
+
+// h4{
+//   text-align: center;
+//   font-size: large;
+//   text-decoration: none;
+// }
+
+
+
+// .pokemon-box{
+//   width: calc(85% - 10px);
+// }
+
+// .card:hover{
+//   background-color: rgba(223, 220, 220, 0.3);
+//   cursor: pointer;
+// }
+
+.guessing{
+  filter: brightness(0%);
+}
+.guessed{
+
+}
+
+.missing{
+  filter: grayscale(100%);
+}
+
+.mostrar{
+  visibility: visible;
+}
+
+.ocultar{
+  display: none;
+}
+
+
+
+.typeDisplayerMenu {
+  list-style-type: none; /* Remove default list styles */
+  margin: 0;
+  padding: 0;
+  display: flex; 
+  justify-content: center;
+  gap: 7%;
+}
+
+.steel{
+  color: black;
+  background-color: $color-acero;
+  border-color: black;
+}
+
+.water{
+  color: black;
+  background-color: $color-agua;
+  border-color: black;
+}
+
+.bug{
+  color: black;
+  background-color: $color-bicho;
+  border-color: black;
+}
+
+.dragon{
+  color: white;
+  background-color: $color-dragon;
+  border-color: white;
+}
+
+.electric{
+  color: black;
+  background-color: $color-electrico;
+  border-color: black;
+}
+
+.ghost{
+  color: white;
+  background-color: $color-fantasma;
+  border-color: white;
+}
+
+.fire{
+  color: black;
+  background-color: $color-fuego;
+  border-color: black;
+}
+
+.fairy{
+  color: black;
+  background-color: $color-hada;
+  border-color: black;
+}
+
+.ice{
+  color: black;
+  background-color: $color-hielo;
+  border-color: black;
+}
+
+.fighting{
+  color: black;
+  background-color: $color-lucha;
+  border-color: black;
+}
+
+.normal{
+  color: black;
+  background-color: $color-normal;
+  border-color: black;
+}
+
+.grass{
+  color: black;
+  background-color: $color-planta;
+  border-color: black;
+}
+
+.psychic{
+  color: black;
+  background-color: $color-psiquico;
+  border-color: black;
+}
+
+.rock{
+  color: black;
+  background-color: $color-roca;
+  border-color: black;
+}
+
+.dark{
+  color: white;
+  background-color: $color-siniestro;
+  border-color: white;
+}
+
+.ground{
+  color: white;
+  background-color: $color-tierra;
+  border-color: white;
+}
+
+.poison{
+  color: white;
+  background-color: $color-veneno;
+  border-color: white;
+}
+
+.flying{
+  color: black;
+  background-color: $color-volador;
+  border-color: black;
+}
+
+.pokemonType{
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+
+  padding: 2px;
+  height: 20px;
+  width: 90px;
+  border-radius: 15px;
+  border: 2px solid;
+
+  line-height: 10px;
+}

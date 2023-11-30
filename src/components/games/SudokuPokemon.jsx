@@ -1,7 +1,7 @@
 export default function SudokuPokemon(){
     return(
-        <div>
+        <main className="sudokuGame">
             <h2>WORK IN PROGRESS</h2>
-        </div>
+        </main>
     )
 }

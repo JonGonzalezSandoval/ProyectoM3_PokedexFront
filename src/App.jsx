@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
-import "./App.scss";
+import "./styles/App.scss";
 import "./styles/pokemonCard.scss"
 import "./styles/header.scss"
+import "./styles/games.scss"
+import "./styles/userManagement.scss"
+import "./styles/home.scss"
+import "./styles/pokedex.scss"
+import "./styles/myPokedex.scss"
+import "./styles/filter.scss"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserContext from "./context/UserContext";
 import MainWeb from "./components/mainWeb/MainWeb";
@@ -16,6 +22,7 @@ import WhatPokemon from "./components/games/WhatPokemon";
 import Profile from "./components/userManagement/Profile";
 import Pokemon from "./components/pokemon/Pokemon";
 import SudokuPokemon from "./components/games/SudokuPokemon";
+import Logout from "./components/userManagement/Logout";
 
 
 function App() {
@@ -60,6 +67,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainWeb/>}/>
           <Route path="/login" element={<Login/>}/>
+          <Route path="/logout" element={<Logout/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/pokedex" element={<Pokedex/>}/>

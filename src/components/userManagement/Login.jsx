@@ -61,7 +61,7 @@ export default function Login() {
   }
 
   return (
-    <>
+    <main className="main-manage">
       <form>
         <label htmlFor="">
           Username: 
@@ -78,15 +78,14 @@ export default function Login() {
             onChange={handleInput}
             type="password"
             name="password"
-            placeholde
-            r="Password"
+            placeholder="Password"
           />
         </label>
         <button onClick={handleClick}>Login</button>
       </form>
-      <div>
-        <Link to="/register">No tienes cuenta? Registrate</Link>
+      <div className="enlaceRegistro">
+        <Link to="/register">Don't have an account?</Link>
       </div>
-    </>
+    </main>
   );
 }

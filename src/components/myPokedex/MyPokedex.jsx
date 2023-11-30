@@ -5,7 +5,7 @@ import Filter from "../filter/Filter";
 
 export default function MyPokedex() {
   const [paginados, setPaginados] = useState(null);
-  const [pagina, setpagina] = useState(null)
+  const [pagina, setPagina] = useState(1);
   const { loginUser, setLoginUser } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -16,17 +16,16 @@ export default function MyPokedex() {
     let data = {
       method: "PUT",
       headers: {
-          "Content-Type": "application/json",
-          "Authorization": localStorage.getItem("SavedToken")
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("SavedToken"),
       },
-      body: JSON.stringify({username, pokemonId}),
-  }
+      body: JSON.stringify({ username, pokemonId }),
+    };
     fetch(`http://localhost:3000/api/users/updateFavorite`, data)
-    .then(res => res.json())
-    .then(res => {
-      getMyPokemonList(actualWeb);
-    })
-    
+      .then((res) => res.json())
+      .then((res) => {
+        getMyPokemonList(actualWeb);
+      });
   }
 
   function getMyPokemonList(enlaceFetch) {
@@ -35,12 +34,12 @@ export default function MyPokedex() {
     let data = {
       method: "POST",
       headers: {
-          "Content-Type": "application/json",
-          "Authorization": localStorage.getItem("SavedToken")
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("SavedToken"),
       },
-      body: JSON.stringify({username}),
-  }
-  
+      body: JSON.stringify({ username }),
+    };
+
     fetch(enlaceFetch, data)
       .then((res) => {
         if (res.status === 401) {
@@ -81,50 +80,67 @@ export default function MyPokedex() {
   }, []);
 
   useEffect(() => {
-
-  getMyPokemonList("http://localhost:3000/api/users/getUserList?range=30&offset=0");
-  },[loginUser])
+    getMyPokemonList(
+      "http://localhost:3000/api/users/getUserList?range=30&offset=0"
+    );
+  }, [loginUser]);
 
   return (
     <main>
-      <div className="pokemon-box">
+      <div className="my-pokemon-box">
         {paginados !== null ? (
           <>
-        <div>
-          <div onClick={()=>getMyPokemonList(paginados.before)}>anterior</div>
-          <div>Box {}</div>
-          <div onClick={()=>getMyPokemonList(paginados.after)}>siguiente</div>
-        </div>
-        <div className="card-displayer">
-            {paginados.pokemon.map((pokemon) => (
-              <div key={pokemon[0].pokemonNumber} className={!pokemon[1]?"card missing":"card "}>
-                <div
-                  onClick={() => handleFavorite(pokemon[0]._id, paginados.actual)}
-                  className="img-container"
-                >
-                  {/* {require('./images/pokeball.png')} */}
-                  <img
-                    src="../../../images/pokeball.png"
-                    alt="Pokeball image"
-                  />
-                </div>
-                <div>
-                  <Link to={`/pokemon/${pokemon[0].name}`}>
-                    <img
-                      src={pokemon[0].urlImg}
-                      alt={`Imagen del pokemon ${pokemon[0].name}`}
-                    />
-                  </Link>
-                </div>
+            <div className="cabeceraCajas">
+              <div
+                onClick={() => getMyPokemonList(paginados.before)}
+                className="arrow"
+              >
+                <span>&lt;</span>
               </div>
-            ))}
+              <div className="boxNumber">
+                <span>Box {pagina}</span>
+              </div>
+              <div
+                onClick={() => getMyPokemonList(paginados.after)}
+                className="arrow"
+              >
+                <span>&gt;</span>
+              </div>
             </div>
-            </>
-          ) : (
-            <div>Loading...</div>
-          )}
+            <div className="card-displayer">
+              {paginados.pokemon.map((pokemon) => (
+                <div
+                  key={pokemon[0].pokemonNumber}
+                  className={!pokemon[1] ? "card missing" : "card "}
+                >
+                  <div
+                    onClick={() =>
+                      handleFavorite(pokemon[0]._id, paginados.actual)
+                    }
+                    className="img-container"
+                  >
+                    <img
+                      src="../../../images/pokeball.png"
+                      alt="Pokeball image"
+                    />
+                  </div>
+                  <div className="pokemonImg-myPokedex">
+                    <Link to={`/pokemon/${pokemon[0].name}`}>
+                      <img
+                        src={pokemon[0].urlImg}
+                        alt={`Imagen del pokemon ${pokemon[0].name}`}
+                      />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <div>Loading...</div>
+        )}
       </div>
-      <Filter />
+      {/* <Filter /> */}
     </main>
   );
 }

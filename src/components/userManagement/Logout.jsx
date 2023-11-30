@@ -14,8 +14,8 @@ export default function Logout() {
   }
 
   return (
-      <button className="logout" onClick={handleLogout}>
+      <span className="enlace logout" onClick={handleLogout}>
         Logout{" "}
-      </button>
+      </span>
   );
 }

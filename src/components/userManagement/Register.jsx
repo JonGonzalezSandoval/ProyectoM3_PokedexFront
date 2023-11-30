@@ -2,9 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /**
-* TODO: Revisar si ya existe un usuario con ese nombre antes de poder registrar el nuevo. Y el metodo de creación.
-*/
-
+ * TODO: Revisar si ya existe un usuario con ese nombre antes de poder registrar el nuevo. Y el metodo de creación.
+ */
 
 export default function Register() {
   const [newUser, setNewUser] = useState({
@@ -23,8 +22,7 @@ export default function Register() {
 
   function handleClick(e) {
     e.preventDefault();
-    let {name, username, password} = newUser;
-
+    let { name, username, password } = newUser;
 
     let data = {
       method: "POST",
@@ -42,7 +40,7 @@ export default function Register() {
         if (res.status == 401) throw new Error("Unauthorized");
       })
       .then((res) => {
-        console.log(res)
+        console.log(res);
       })
       .catch((error) => {
         if (error.message === "Unauthorized") {
@@ -52,32 +50,44 @@ export default function Register() {
           // Handle other errors here
         }
       });
-      navigate("/")
+    navigate("/");
   }
 
   return (
-    <>
+    <main className="main-manage">
       <form onSubmit={handleClick}>
-        <input
-          onChange={handleInput}
-          type="text"
-          name="name"
-          placeholder="John"
-        />
-        <input
-          onChange={handleInput}
-          type="text"
-          name="username"
-          placeholder="Username"
-        />
-        <input
-          onChange={handleInput}
-          type="password"
-          name="password"
-          placeholder="yourpasswordhere"
-        />
+        <label htmlFor="">
+          Name:
+          <input
+            onChange={handleInput}
+            type="text"
+            name="name"
+            required
+            placeholder="John"
+          />
+        </label>
+        <label htmlFor="">
+          Username
+          <input
+            onChange={handleInput}
+            type="text"
+            name="username"
+            required
+            placeholder="Username"
+          />
+        </label>
+        <label htmlFor="">
+          Password
+          <input
+            onChange={handleInput}
+            type="password"
+            name="password"
+            required
+            placeholder="Your password here"
+          />
+        </label>
         <input type="submit" value="Register" />
       </form>
-    </>
+    </main>
   );
 }

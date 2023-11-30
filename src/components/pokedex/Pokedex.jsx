@@ -7,37 +7,41 @@ export default function Pokedex() {
   const { listaPokemon, setListaPokemon } = useContext(UserContext);
 
   return (
-    <>
-      <main>
-        <div className="pokemon-box">
-          <div className="card-displayer">
-            {listaPokemon !== null ? (
-              listaPokemon.map((pokemon) => (
-                <div key={pokemon.pokemonNumber} className="card">
-                  <Link to={`/pokemon/${pokemon.name}`}>
-                    <div>
-                      <img
-                        src={pokemon.urlImg}
-                        alt={`Imagen del pokemon ${pokemon.name}`}
-                        />
-                    </div>
-                    <span>Nº {pokemon.pokemonNumber}</span>
-                    <h4>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.substring(1)}</h4>
-                    <ul>
+    <main className="main-pokedex-displayer">
+      <div className="pokemon-box">
+        <div className="card-displayer">
+          {listaPokemon !== null ? (
+            listaPokemon.map((pokemon) => (
+              <div key={pokemon.pokemonNumber} className="card">
+                <Link to={`/pokemon/${pokemon.name}`}>
+                  <div className="imgCard">
+                    <img
+                      src={pokemon.urlImg}
+                      alt={`Imagen del pokemon ${pokemon.name}`}
+                    />
+                  </div>
+                  <span>Nº {pokemon.pokemonNumber}</span>
+                  <h4>
+                    {pokemon.name.charAt(0).toUpperCase() +
+                      pokemon.name.substring(1)}
+                  </h4>
+                  <ul className="typeDisplayerMenu">
                     {pokemon.pokemonType.map((tipo, i) => (
-                      <li key={i}>{tipo.name.charAt(0).toUpperCase() + tipo.name.substring(1)}</li>
+                      <li key={i} className={`pokemonType ${tipo.name}`}>
+                        {tipo.name.charAt(0).toUpperCase() +
+                          tipo.name.substring(1)}
+                      </li>
                     ))}
-                    </ul>
-                  </Link>
-                </div>
-              ))
-            ) : (
-              <h3>Cargando datos</h3>
-            )}
-          </div>
+                  </ul>
+                </Link>
+              </div>
+            ))
+          ) : (
+            <h3>Cargando datos</h3>
+          )}
         </div>
-        <Filter />
-      </main>
-    </>
+      </div>
+      <Filter />
+    </main>
   );
 }

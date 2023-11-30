@@ -1,0 +1,98 @@
+@import './variables';
+
+.main-games{
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    h2{
+        width: 100%;
+        text-align: center;
+        align-self: center;
+    }
+
+    .main-gameBox{
+        box-sizing: border-box;
+        margin: 10px;
+        height: 40vh;
+        width: calc(40% - 10px);
+        border-radius: 15px;
+        border: 2px solid;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: x-large;
+        background-color: $color-fondo-elementos;
+        transition: 0.3s;
+
+        &:hover{
+            background-color: darken($color-fondo-elementos, 20%);
+            cursor: pointer;
+        }
+
+
+        a{
+            width: 100%;
+            height: 100%;
+            line-height: 350px;
+            text-decoration: none;
+            text-align: center;
+        }
+    }
+}
+
+.wordleGame{
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+
+    &-gameBox{
+        width: 50%;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        box-shadow: 5px 10px 10px grey;
+        background-color: $color-fondo-elementos;
+
+        .wordle-imgContainer{
+            height: 30%;
+            img{
+               width: 100%;
+               height: 100%;
+               
+            }
+        }
+
+        .input-box{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+            .textBox{
+                width: 100%;
+                display: block;
+            }
+
+            button{
+                margin-top: 5px;
+                width: 45%;
+            }
+        }
+    }
+}
+
+.sudokuGame{
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

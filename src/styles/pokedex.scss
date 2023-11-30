@@ -1,0 +1,71 @@
+@import "./variables";
+
+.main-pokedex-displayer {
+    display: flex;
+
+
+  .pokemon-box {
+    width: 83%;
+    min-height: 85vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+
+      &:visited {
+        text-decoration: none;
+      }
+
+      &:hover {
+        color: $color-link-hover;
+      }
+    }
+
+    .card-displayer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      border-radius: 10px;
+      border: solid 3px #f4f4f4;
+      box-sizing: border-box;
+      width: calc(100% - 10px);
+      margin: 5px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      box-shadow: 5px 10px 10px grey;
+
+      .card {
+        width: calc(16.6667% - 10px);
+        margin: 5px;
+        padding: 10px;
+        height: 30vh;
+        border-radius: 10px;
+        box-sizing: border-box;
+
+        a {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: $color-letra;
+          .imgCard {
+            width: 50%;
+            height: 50%;
+
+            img {
+              width: 100%;
+            }
+          }
+        }
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.7);
+        }
+      }
+    }
+  }
+}
