@@ -8,7 +8,7 @@ export default function Pokemon() {
   const [pokemon, setPokemon] = useState(null);
 
   function findPokemonInfo(pokemonParam) {
-    fetch(`http://localhost:3000/api/pokemon/unique/${pokemonParam}`)
+    fetch(`http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/pokemon/unique/${pokemonParam}`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res);

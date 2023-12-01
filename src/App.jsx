@@ -8,6 +8,7 @@ import "./styles/home.scss"
 import "./styles/pokedex.scss"
 import "./styles/myPokedex.scss"
 import "./styles/filter.scss"
+import "./styles/footer.scss"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserContext from "./context/UserContext";
 import MainWeb from "./components/mainWeb/MainWeb";
@@ -32,21 +33,21 @@ function App() {
   const [loginUser, setLoginUser] = useState(null)
 
   function pedidaTestPokemon() {
-    fetch("http://localhost:3000/api/pokemon/paginated")
+    fetch("http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/pokemon/paginated")
       .then((res) => res.json())
       .then((res) => {
         setListaPokemon(res.pokemon);
       });
   }
   function pedidaTestTipos() {
-    fetch("http://localhost:3000/api/pokemon-types/allTypes")
+    fetch("http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/pokemon-types/allTypes")
       .then((res) => res.json())
       .then((res) => {
         setListaTipos(res);
       });
   }
   function pedidaTestHabilidades() {
-    fetch("http://localhost:3000/api/pokemon-abilities/allAbilities")
+    fetch("http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/pokemon-abilities/allAbilities")
       .then((res) => res.json())
       .then((res) => {
         setListaHabilidades(res)

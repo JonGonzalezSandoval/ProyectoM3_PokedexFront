@@ -24,7 +24,7 @@ export default function Login() {
       body: JSON.stringify({username, password}),
   }
 
-  fetch('http://localhost:3000/api/auth/login', data)
+  fetch('http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/auth/login', data)
     .then(res => {
         if(res.status == 202){
            return  res.text()
@@ -35,7 +35,7 @@ export default function Login() {
     .then(res => {
         localStorage.removeItem('SavedToken')
         localStorage.setItem("SavedToken", 'Bearer ' + res)
-            fetch('http://localhost:3000/api/auth/profile', { headers: { Authorization:localStorage.getItem('SavedToken') }})
+            fetch('http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/auth/profile', { headers: { Authorization:localStorage.getItem('SavedToken') }})
             .then(res => res.json())
             .then(res =>{
               console.log(res)

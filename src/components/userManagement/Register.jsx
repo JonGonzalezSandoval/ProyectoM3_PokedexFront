@@ -32,7 +32,7 @@ export default function Register() {
       body: JSON.stringify({ name, username, password }),
     };
 
-    fetch("http://localhost:3000/api/users/newUser", data)
+    fetch("http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/users/newUser", data)
       .then((res) => {
         if (res.status == 202) {
           return res.text();

@@ -21,7 +21,7 @@ export default function MyPokedex() {
       },
       body: JSON.stringify({ username, pokemonId }),
     };
-    fetch(`http://localhost:3000/api/users/updateFavorite`, data)
+    fetch(`http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/users/updateFavorite`, data)
       .then((res) => res.json())
       .then((res) => {
         getMyPokemonList(actualWeb);
@@ -60,7 +60,7 @@ export default function MyPokedex() {
 
   useEffect(() => {
     if (localStorage.getItem("SavedToken") !== null) {
-      fetch("http://localhost:3000/api/auth/profile", {
+      fetch("http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/auth/profile", {
         headers: { Authorization: localStorage.getItem("SavedToken") },
       })
         .then((res) => {
@@ -81,7 +81,7 @@ export default function MyPokedex() {
 
   useEffect(() => {
     getMyPokemonList(
-      "http://localhost:3000/api/users/getUserList?range=30&offset=0"
+      "http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/users/getUserList?range=30&offset=0"
     );
   }, [loginUser]);
 

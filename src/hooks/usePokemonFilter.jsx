@@ -7,7 +7,7 @@ export const usePokemonFilter = (selectedTypes, selectedAbilities) => {
   const getPokemon = useCallback(async () => {
     try {
       const allPokemon = await searchPokemon(
-        "http://localhost:3000/api/pokemon/paginated"
+        "http://p01--pokebancoapi--x42njn4vlmsz.code.run/api/pokemon/paginated"
       );
       setPokemon(allPokemon);
     } catch (error) {}
